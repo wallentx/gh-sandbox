@@ -1,18 +1,3 @@
----
-name: Pull Request Template
-about: For Pull Requests
-title: "[Changelog-friendly title]"
-labels: ''
-assignees: ''
-
----
-
-* **What kind of change does this PR introduce?** (Check *one* below)
-- [ ] Added
-- [ ] Modified
-- [ ] Fixed
-
-
 * **What is the purpose of the changes in this PR?**
 
 
