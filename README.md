@@ -1,3 +1,3 @@
 # gh-sandbox
-fuck you
+GitHub Sandbox
 test
