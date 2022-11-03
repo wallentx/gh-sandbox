@@ -6,7 +6,7 @@ jobs:
   check-labels:
     runs-on: ubuntu-latest
     permissions:
-      checks: read
+      checks: write
       pull-requests: read
     outputs:
       status: ${{ steps.check-labels.outputs.status }}
