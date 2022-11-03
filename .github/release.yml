@@ -3,8 +3,8 @@
 changelog:
   exclude:
     labels:
-      - ci
-      - tests
+      - :robot: CI
+      - :slot_machine: Tests
       - cleanup
       - dependencies
     authors:
