@@ -8,7 +8,7 @@ jobs:
     permissions:
       checks: write
       pull-requests: read
-      statuses: read
+      statuses: write
     outputs:
       status: ${{ steps.check-labels.outputs.status }}
     steps:
