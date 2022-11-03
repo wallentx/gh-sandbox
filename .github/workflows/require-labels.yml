@@ -6,12 +6,11 @@ jobs:
   check-labels:
     runs-on: ubuntu-latest
     permissions:
-      actions: read
+      actions: none
       checks: write
-      contents: read
-      id-token: none
+      contents: none
       pull-requests: read
-      statuses: write
+      statuses: none
     outputs:
       status: ${{ steps.check-labels.outputs.status }}
     steps:
