@@ -3,8 +3,8 @@
 changelog:
   exclude:
     labels:
-      - ci
-      - tests
+      - CI
+      - Tests
       - cleanup
       - dependencies
     authors:
