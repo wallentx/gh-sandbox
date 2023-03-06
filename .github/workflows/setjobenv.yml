@@ -11,8 +11,12 @@ jobs:
       if: runner.os == 'Linux'
       shell: bash
       run: |
-        free -h
-        lscpu
+        if [[ $RUNNER_DEBUG = 1 ]]; then
+          free -h
+          echo "――――――――――――――――――――――"
+          lscpu
+          echo "――――――――――――――――――――――"
+        fi
         CPU_MODEL=$(lscpu | grep '^Model name:' | awk -F: '{print $2}' | xargs)
         echo "Set CPU_MODEL=$CPU_MODEL"
         echo "CPU_MODEL=$CPU_MODEL" >>$GITHUB_ENV
@@ -44,6 +48,10 @@ jobs:
 #        echo "Set MEM_TOTAL=$MEM_TOTAL"
 #        echo "MEM_TOTAL=$MEM_TOTAL" >>$env:GITHUB_ENV
 #      shell: powershell
+    - name: Catch Payload
+      if:  runner.debug == '1'
+      run: |
+        jq '.' "$GITHUB_EVENT_PATH"
     - name: Set & Print ENV
       run: |
         echo "GitHub native job envs:"
