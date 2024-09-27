@@ -1,0 +1,21 @@
+name: Kunzel Mad
+on:
+  workflow_dispatch:
+
+jobs:
+  make-logs-great-again:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mask-env
+        shell: bash
+        run: |
+          while IFS='=' read -r name value; do
+            echo "::add-mask::$name"
+            echo "::add-mask::$value"
+            echo "$name=$value" >> "$GITHUB_ENV"
+            export "$name=$value"
+          done < <(env | sort)
+      - name: print-env
+        shell: bash
+        run: |
+          env | sort
