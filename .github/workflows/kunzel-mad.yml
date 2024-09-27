@@ -6,6 +6,10 @@ jobs:
   make-logs-great-again:
     runs-on: ubuntu-latest
     steps:
+      - name: trick-kunzel
+        shell: bash
+        run: |
+          env | sort
       - name: mask-env
         shell: bash
         run: |
