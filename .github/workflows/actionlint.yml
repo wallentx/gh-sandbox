@@ -9,7 +9,7 @@ on:
 jobs:
   checkout:
     runs-on:
-      - Linux
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: devops-actions/actionlint@v0.1.2
