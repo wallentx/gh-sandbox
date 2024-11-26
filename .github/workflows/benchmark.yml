@@ -1,0 +1,16 @@
+name: Actionlint
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bench:
+    runs-on:
+      - ubuntu-latest
+    steps:
+      - name: bench
+        shell: bash
+        run: |
+          wget https://cdn.geekbench.com/Geekbench-6.3.0-Linux.tar.gz -O - | \
+            tar -xzvf -
+            ./Geekbench-6.3.0-Linux/geekbench6 --cpu --upload
