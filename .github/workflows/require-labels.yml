@@ -13,7 +13,7 @@ jobs:
       status: ${{ steps.check-labels.outputs.status }}
     steps:
       - id: check-labels
-        uses: wallentx/github-action-required-labels@v2.2.1
+        uses: wallentx/github-action-required-labels@v2.2.2
         with:
           mode: exactly
           count: 1
