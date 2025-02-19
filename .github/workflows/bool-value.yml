@@ -1,0 +1,27 @@
+name: Echo Bool Workflow
+
+on:
+  workflow_call:
+    inputs:
+      flag:
+        type: boolean
+        required: true
+
+jobs:
+  echo_bool:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Conditional true
+        run: |
+          if [[ ${{ inputs.push-latest }} == true ]]; then
+            echo "The flag is ✅"
+          else
+            echo "The flag is ❌"
+          fi
+      - name: Conditional quote true
+        run: |
+          if [[ "${{ inputs.push-latest }}" == true ]]; then
+            echo "The flag is ✅"
+          else
+            echo "The flag is ❌"
+          fi
