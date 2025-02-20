@@ -13,14 +13,14 @@ jobs:
     steps:
       - name: Conditional true
         run: |
-          if [[ ${{ inputs.push-latest }} == true ]]; then
+          if [[ ${{ inputs.flag }} == true ]]; then
             echo "The flag is ✅"
           else
             echo "The flag is ❌"
           fi
       - name: Conditional quote true
         run: |
-          if [[ "${{ inputs.push-latest }}" == true ]]; then
+          if [[ "${{ inputs.flag }}" == true ]]; then
             echo "The flag is ✅"
           else
             echo "The flag is ❌"
