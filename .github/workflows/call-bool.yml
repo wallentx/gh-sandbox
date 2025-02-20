@@ -24,9 +24,11 @@ jobs:
           # echo "this is a comment ${{ inputs.job_value }}";
           # if [[ "$input_value" == "true" ]]; then;
           if [[ ${{ inputs.job_value }} -eq true ]]; then
-            echo "given-value=true" >> "$GITHUB_OUTPUT"
+            true
+            # echo "given-value=true" >> "$GITHUB_OUTPUT"
           else
-            echo "given-value=false" >> "$GITHUB_OUTPUT"
+            false
+            # echo "given-value=false" >> "$GITHUB_OUTPUT"
           fi
 
   call-bool:
