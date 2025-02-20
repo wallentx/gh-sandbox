@@ -11,17 +11,13 @@ jobs:
   echo_bool:
     runs-on: ubuntu-latest
     steps:
-      - name: Conditional true
-        run: |
-          if [[ ${{ inputs.flag }} == true ]]; then
-            echo "The flag is ✅"
-          else
-            echo "The flag is ❌"
-          fi
+      # - name: Conditional true
+      #   run: |
+      #     if [[ ${{ inputs.flag }} == true ]]; then
+      #       echo "The flag is ✅"
+      #     else
+      #       echo "The flag is ❌"
+      #     fi
       - name: Conditional quote true
-        run: |
-          if [[ "${{ inputs.flag }}" == true ]]; then
-            echo "The flag is ✅"
-          else
-            echo "The flag is ❌"
-          fi
+        shell: bash
+        run: bash -c '[[ ${{ inputs.flag }} ]] && echo "The flag is ✅" || echo "The flag is ❌"'
