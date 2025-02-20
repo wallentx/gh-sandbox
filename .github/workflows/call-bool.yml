@@ -23,7 +23,7 @@ jobs:
           # echo "hello";
           # echo "this is a comment ${{ inputs.job_value }}";
           # if [[ "$input_value" == "true" ]]; then;
-          if [[ ${{ inputs.job_value }} -eq true ]]; then
+          if [[ ${{ inputs.job_value }} = true ]]; then
             true
             # echo "given-value=true" >> "$GITHUB_OUTPUT"
           else
@@ -36,4 +36,4 @@ jobs:
       - set-value
     uses: ./.github/workflows/bool-value.yml
     with:
-      flag: '${{ needs.set-value.outputs.given-value }}'
+      flag: ${{ needs.set-value.outputs.given-value }}
