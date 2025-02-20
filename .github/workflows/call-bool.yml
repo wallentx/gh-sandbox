@@ -24,9 +24,9 @@ jobs:
           # echo "this is a comment ${{ inputs.job_value }}";
           # if [[ "$input_value" == "true" ]]; then;
           if [[ ${{ inputs.job_value }} = true ]]; then
-            echo "given-value=true" >> "$GITHUB_ENV"
+            echo "GIVEN_VALUE=true" >> "$GITHUB_ENV"
           else
-            echo "given-value=false" >> "$GITHUB_ENV"
+            echo "GIVEN_VALUE=false" >> "$GITHUB_ENV"
           fi
 
   call-bool:
@@ -34,4 +34,4 @@ jobs:
       - set-value
     uses: ./.github/workflows/bool-value.yml
     with:
-      flag: ${{ env.given-value }}
+      flag: ${{ env.GIVEN_VALUE }}
