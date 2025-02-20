@@ -34,4 +34,4 @@ jobs:
       - set-value
     uses: ./.github/workflows/bool-value.yml
     with:
-      flag: ${{ needs.set-value.outputs.given-value }}
+      flag: '${{ needs.set-value.outputs.given-value }}'
