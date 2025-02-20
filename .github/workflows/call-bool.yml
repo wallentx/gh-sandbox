@@ -1,0 +1,40 @@
+name: Dispatch Bool Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      job_value:
+        description: 'Boolean value for the job'
+        required: true
+        type: boolean
+
+jobs:
+  set-value:
+    runs-on: ubuntu-latest
+    outputs:
+      given-value: ${{ steps.set_value.outputs.given-value }}
+    steps:
+      - name: Set Output based on job_value input
+        id: set_value
+        env:
+          input_value: ${{ inputs.job_value }}
+        shell: bash
+        run: -|
+          echo "hello"
+          echo "this is a comment ${{ inputs.job_value }}"
+
+        
+#        run: |
+          #if [[ "$input_value" == "true" ]]; then
+          # if [[ "${{ inputs.job_value }}" -eq true ]]; then
+          #   echo "given-value=true" >> "$GITHUB_OUTPUT"
+          # else
+          #   echo "given-value=false" >> "$GITHUB_OUTPUT"
+          # fi
+
+  call-bool:
+    needs:
+      - set-value
+    uses: ./.github/workflows/bool-value.yml
+    with:
+      flag: ${{ needs.set-value.outputs.given-value }}
