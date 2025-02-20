@@ -20,9 +20,9 @@ jobs:
           input_value: ${{ inputs.job_value }}
         shell: bash
         run: |-
-          # echo "hello"
-          # echo "this is a comment ${{ inputs.job_value }}"
-          # if [[ "$input_value" == "true" ]]; then
+          # echo "hello";
+          # echo "this is a comment ${{ inputs.job_value }}";
+          # if [[ "$input_value" == "true" ]]; then;
           if [[ "${{ inputs.job_value }}" -eq true ]]; then
             echo "given-value=true" >> "$GITHUB_OUTPUT"
           else
