@@ -19,7 +19,7 @@ jobs:
         env:
           input_value: ${{ inputs.job_value }}
         shell: bash
-        run: |
+        run: |-
           # echo "hello"
           # echo "this is a comment ${{ inputs.job_value }}"
           # if [[ "$input_value" == "true" ]]; then
