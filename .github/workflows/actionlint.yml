@@ -1,9 +1,6 @@
 name: Actionlint
 
 on:
-  pull_request:
-    branches:
-      - '*'
   push:
   workflow_dispatch:
 

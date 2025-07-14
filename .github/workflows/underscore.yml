@@ -2,20 +2,21 @@ name: Version Demo
 on:
   push:
     branches:
-      - main
+      - '*'
   workflow_dispatch:
 
 env:
   MAJOR: '2'
   MINOR: '3'
   PATCH: '3'
-  VERSION_PARTS: '["${{ env.MAJOR }}","${{ env.MINOR }}","${{ env.PATCH }}"]'
-  VERSION_UNDERSCORE: ${{ join(fromJson(env.VERSION_PARTS), '_') }}
-  VERSION_DOT: ${{ join(fromJson(env.VERSION_PARTS), '.') }}
 
 jobs:
   demo:
     runs-on: ubuntu-latest
+    env:
+      VERSION_PARTS: ${{ tojson([ env.MAJOR, env.MINOR, env.PATCH ]) }}
+      VERSION_UNDERSCORE: ${{ join(fromJson(env.VERSION_PARTS), '_') }}
+      VERSION_DOT: ${{ join(fromJson(env.VERSION_PARTS), '.')
     steps:
       - name: Show both versions
         run: |
