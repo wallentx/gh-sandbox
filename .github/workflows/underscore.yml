@@ -1,0 +1,12 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      default_version: '2.3.3'
+      default_version_underscore: ${{ join(split(env.default_version, '.'), '_') }}
+    steps:
+      - name: Show underscored version
+        shell: bash
+        run: |
+          echo "Underscored from env: $DEFAULT_VERSION_UNDERSCORE"
+          echo "Underscored in-line: ${{ join(split(env.default_version, '.'), '_') }}
