@@ -4,23 +4,33 @@ on:
     branches:
       - '*'
   workflow_dispatch:
-
-env:
-  MAJOR: '2'
-  MINOR: '3'
-  PATCH: '3'
+    inputs:
+      major:
+        description: 'Major version'
+        required: true
+        default: '1'
+      minor:
+        description: 'Minor version'
+        required: true
+        default: '0'
+      patch:
+        description: 'Patch version'
+        required: true
+        default: '0'
 
 jobs:
   demo:
     runs-on: ubuntu-latest
     env:
-      VERSION_PARTS: ${{ tojson([ env.MAJOR, env.MINOR, env.PATCH ]) }}
-      VERSION_UNDERSCORE: ${{ join(fromJson(env.VERSION_PARTS), '_') }}
-      VERSION_DOT: ${{ join(fromJson(env.VERSION_PARTS), '.')
+      MAJOR: ${{ github.event.inputs.major }}
+      MINOR: ${{ github.event.inputs.minor }}
+      PATCH: ${{ github.event.inputs.patch }}
+      VERSION_DOT: ${{ format('{0}.{1}.{2}', github.event.inputs.major, github.event.inputs.minor, github.event.inputs.patch) }}
+      VERSION_UNDERSCORE: ${{ format('{0}_{1}_{2}', github.event.inputs.major, github.event.inputs.minor, github.event.inputs.patch) }}
     steps:
-      - name: Show both versions
+      - name: Show versions
         run: |
+          echo "Dotted:      $VERSION_DOT"
           echo "Underscored: $VERSION_UNDERSCORE"
-          echo "Dotted: $VERSION_DOT"
-          echo "Inline underscore: ${{ join(fromJson(env.VERSION_PARTS), '_') }}"
-          echo "Inline dot: ${{ join(fromJson(env.VERSION_PARTS), '.') }}"
+          echo "Inline dot:  ${{ format('{0}.{1}.{2}', github.event.inputs.major, github.event.inputs.minor, github.event.inputs.patch) }}"
+          echo "Inline under:${{ format('{0}_{1}_{2}', github.event.inputs.major, github.event.inputs.minor, github.event.inputs.patch) }}"
