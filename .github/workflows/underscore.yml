@@ -8,15 +8,15 @@ on:
       major:
         description: 'Major version'
         required: true
-        default: '1'
+        default: '2'
       minor:
         description: 'Minor version'
         required: true
-        default: '0'
+        default: '3'
       patch:
         description: 'Patch version'
         required: true
-        default: '0'
+        default: '3'
 
 jobs:
   demo:
@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Show versions
         run: |
-          echo "Dotted:      $VERSION_DOT"
+          echo "Dotted: $VERSION_DOT"
           echo "Underscored: $VERSION_UNDERSCORE"
           echo "Inline dot:  ${{ format('{0}.{1}.{2}', github.event.inputs.major, github.event.inputs.minor, github.event.inputs.patch) }}"
           echo "Inline under:${{ format('{0}_{1}_{2}', github.event.inputs.major, github.event.inputs.minor, github.event.inputs.patch) }}"
