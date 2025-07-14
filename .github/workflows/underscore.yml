@@ -5,13 +5,13 @@ on:
       - main
   workflow_dispatch:
 
-
 env:
   MAJOR: '2'
   MINOR: '3'
   PATCH: '3'
-  VERSION_UNDERSCORE: ${{ join([ env.MAJOR, env.MINOR, env.PATCH ], '_' ) }}
-  VERSION_DOT: ${{ join([ env.MAJOR, env.MINOR, env.PATCH ], '.' ) }}
+  VERSION_PARTS: '["${{ env.MAJOR }}","${{ env.MINOR }}","${{ env.PATCH }}"]'
+  VERSION_UNDERSCORE: ${{ join(fromJson(env.VERSION_PARTS), '_') }}
+  VERSION_DOT: ${{ join(fromJson(env.VERSION_PARTS), '.') }}
 
 jobs:
   demo:
@@ -20,5 +20,6 @@ jobs:
       - name: Show both versions
         run: |
           echo "Underscored: $VERSION_UNDERSCORE"
-          echo "Dotted:      $VERSION_DOT"
-          echo "Underscored in-line: ${{ join([ env.MAJOR, env.MINOR, env.PATCH ], '_' ) }}"
+          echo "Dotted: $VERSION_DOT"
+          echo "Inline underscore: ${{ join(fromJson(env.VERSION_PARTS), '_') }}"
+          echo "Inline dot: ${{ join(fromJson(env.VERSION_PARTS), '.') }}"
